@@ -1,0 +1,30 @@
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    hadoopVersion="2.7.0"
+    pigVersion="0.14.0"
+    pigunitVersion="0.14.0"
+}
+
+if (hadoopVersion.startsWith("2.") || hadoopVersion.startsWith("0.23.")) {
+  dependencies {
+    compile "org.apache.pig:pig:$pigVersion:h2"
+    compile "org.apache.hadoop:hadoop-common:$hadoopVersion"
+    compile "org.apache.hadoop:hadoop-hdfs:$hadoopVersion"
+    compile "org.apache.hadoop:hadoop-mapreduce-client-jobclient:$hadoopVersion"
+  }
+} else {
+  dependencies {
+    compile "org.apache.pig:pig:$pigVersion"
+    compile "org.apache.hadoop:hadoop-core:$hadoopVersion"
+  }
+}
+
+dependencies {
+  testCompile group: "org.apache.pig", name: "pigunit", version: "$pigunitVersion"
+}
