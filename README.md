@@ -1,5 +1,7 @@
 # PigRank
 
+[![Build Status](https://secure.travis-ci.org/stefan-schroedl/pigrank.png?branch=master)](http://travis-ci.org/stefan-schroedl/pigrank)
+
 ## Purpose
 
 Apache Pig UDFs for computing ranking measures.
