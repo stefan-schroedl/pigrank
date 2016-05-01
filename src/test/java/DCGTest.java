@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class DCGTest {
 
-  private static final String PIG_PREFIX = "./src/test/resources/";
+  private static final String PIG_PREFIX = "./src/test/pig/";
   private static final String PIG_DCG = PIG_PREFIX + "test_dcg.pig";
 
   @Test

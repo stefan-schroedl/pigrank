@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class MRRTest {
 
-  private static final String PIG_PREFIX = "./src/test/resources/";
+  private static final String PIG_PREFIX = "./src/test/pig/";
   private static final String PIG_MRR = PIG_PREFIX + "test_mrr.pig";
 
   @Test

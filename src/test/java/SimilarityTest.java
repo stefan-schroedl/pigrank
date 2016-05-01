@@ -8,15 +8,15 @@ import org.junit.Test;
 
 public class SimilarityTest {
 
-  private static final String PIG_PREFIX = "./src/test/resources/";
+  private static final String PIG_PREFIX = "./src/test/pig/";
   private static final String PIG_SIMILARITY = PIG_PREFIX + "test_similarity.pig";
 
-@Test
-public void testSimilarity() throws IOException, ParseException {
+  @Test
+  public void testSimilarity() throws IOException, ParseException {
 
-  PigTest test = new PigTest(PIG_SIMILARITY);
+    PigTest test = new PigTest(PIG_SIMILARITY);
 
-  String[] input = { "q1\tt1\ta1a\t9", "q1\tt1\ta2\t8",
+    String[] input = { "q1\tt1\ta1a\t9", "q1\tt1\ta2\t8",
                        "q1\tt2\ta1b\t9", "q1\tt2\ta2\t8",
 
                        "q2\tt1\ta1a\t9", "q2\tt1\ta2\t8", "q2\tt1\ta3\t7", "q2\tt1\ta4\t6", "q2\tt1\ta5\t5", "q2\tt1\ta6\t4",
