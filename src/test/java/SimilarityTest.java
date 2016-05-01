@@ -8,13 +8,11 @@ import org.junit.Test;
 
 public class SimilarityTest {
 
-  private static final String PIG_PREFIX = "./src/test/pig/";
-  private static final String PIG_SIMILARITY = PIG_PREFIX + "test_similarity.pig";
-
   @Test
   public void testSimilarity() throws IOException, ParseException {
 
-    PigTest test = new PigTest(PIG_SIMILARITY);
+    final String path = Thread.currentThread().getContextClassLoader().getResource("test_similarity.pig").getPath();
+    PigTest test = new PigTest(path);
 
     String[] input = { "q1\tt1\ta1a\t9", "q1\tt1\ta2\t8",
                        "q1\tt2\ta1b\t9", "q1\tt2\ta2\t8",

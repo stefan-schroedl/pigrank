@@ -8,15 +8,13 @@ import org.junit.Test;
 
 public class MRRTest {
 
-  private static final String PIG_PREFIX = "./src/test/pig/";
-  private static final String PIG_MRR = PIG_PREFIX + "test_mrr.pig";
-
   @Test
   public void testMRR() throws IOException, ParseException {
     
-  PigTest test = new PigTest(PIG_MRR);
+    final String path = Thread.currentThread().getContextClassLoader().getResource("test_mrr.pig").getPath();
+    PigTest test = new PigTest(path);
 
-  String[] input = { "q1\t1.0\t0", "q1\t2.0\t1", "q1\t3.0\t0", "q1\t4.0\t0", "q1\t5.0\t0",
+    String[] input = { "q1\t1.0\t0", "q1\t2.0\t1", "q1\t3.0\t0", "q1\t4.0\t0", "q1\t5.0\t0",
                        "q2\t2.1\t0", "q2\t2.0\t0",
                        "q3\t5\t10",
                        "q4\t5.0\t0", "q4\t3.0\t0", "q4\t4.0\t0", "q4\t2.0\t1", "q4\t4.0\t1", "q4\t1.0\t0", "q4\t4.0\t1",
