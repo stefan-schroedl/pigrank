@@ -1,18 +1,45 @@
 package pigrank;
 
+import java.util.*;
+
 import java.io.IOException;
 
 import org.apache.pig.pigunit.PigTest;
 import org.apache.pig.tools.parameters.ParseException;
 import org.junit.Test;
 
+
 public class DCGTest {
+
+  final static String[] pigScript = {
+    " define DCG     pigrank.DCG('unnormalized', '-1', '1', '2');",
+    " define DCG_3   pigrank.DCG('unnormalized', '3', '1', '2');",
+    " define NDCG    pigrank.DCG('normalized', '-1', '1', '2');",
+    " define WTD_AVG pigrank.DCG('weighted_average', '-1', '1', '2');",
+    " ",
+    " data = load 'input' as (",
+    "         query:chararray,",
+    "         score:double,",
+    "         target:double",
+    " );",
+    " ",
+    " data_gr = group data by query;",
+    " ",
+    " eval = foreach data_gr",
+    " generate",
+    "         flatten(group) as query,",
+    "         DCG(data),",
+    "         DCG_3(data),",
+    "         NDCG(data),",
+    "         WTD_AVG(data)",
+    " ;",
+    " ",
+    " store eval into 'output';" };
 
   @Test
   public void testDCG() throws IOException, ParseException {
 
-      //final String path = Thread.currentThread().getContextClassLoader().getResource("test_dcg.pig").getPath();
-    PigTest test = new PigTest("./src/test/resources/test_dcg.pig");
+    PigTest test = new PigTest(pigScript);
 
     String[] input = { "q1\t1.0\t5", "q1\t2.0\t0", "q1\t3.0\t2", "q1\t4.0\t0", "q1\t5.0\t0",
                        "q2\t2.1\t0", "q2\t2.0\t0",

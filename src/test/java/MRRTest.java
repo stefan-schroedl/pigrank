@@ -8,11 +8,30 @@ import org.junit.Test;
 
 public class MRRTest {
 
+  final static String[] pigScript = {
+    " define MRR pigrank.MRR('1', '2');",
+    " ",
+    " data = load 'input' as (",
+    "         query:chararray,",
+    "         score:double,",
+    "         target:double",
+    " );",
+    " ",
+    " data_gr = group data by query;",
+    " ",
+    " eval = foreach data_gr ",
+    " generate ",
+    "         flatten(group) as query,",
+    "         MRR(data)",
+    " ;",
+    " ",
+    " store eval into 'output';" };
+
+
   @Test
   public void testMRR() throws IOException, ParseException {
     
-    final String path = Thread.currentThread().getContextClassLoader().getResource("test_mrr.pig").getPath();
-    PigTest test = new PigTest(path);
+    PigTest test = new PigTest(pigScript);
 
     String[] input = { "q1\t1.0\t0", "q1\t2.0\t1", "q1\t3.0\t0", "q1\t4.0\t0", "q1\t5.0\t0",
                        "q2\t2.1\t0", "q2\t2.0\t0",
