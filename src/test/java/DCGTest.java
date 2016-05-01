@@ -14,6 +14,7 @@ public class DCGTest {
   @Test
   public void testDCG() throws IOException, ParseException {
 
+    System.err.println(System.getProperty("user.dir"));
     PigTest test = new PigTest(PIG_DCG);
 
     String[] input = { "q1\t1.0\t5", "q1\t2.0\t0", "q1\t3.0\t2", "q1\t4.0\t0", "q1\t5.0\t0",
