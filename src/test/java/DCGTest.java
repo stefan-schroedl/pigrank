@@ -11,8 +11,8 @@ public class DCGTest {
   @Test
   public void testDCG() throws IOException, ParseException {
 
-    final String path = Thread.currentThread().getContextClassLoader().getResource("test_dcg.pig").getPath();
-    PigTest test = new PigTest(path);
+      //final String path = Thread.currentThread().getContextClassLoader().getResource("test_dcg.pig").getPath();
+    PigTest test = new PigTest("./src/test/resources/test_dcg.pig");
 
     String[] input = { "q1\t1.0\t5", "q1\t2.0\t0", "q1\t3.0\t2", "q1\t4.0\t0", "q1\t5.0\t0",
                        "q2\t2.1\t0", "q2\t2.0\t0",

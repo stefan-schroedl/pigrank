@@ -27,4 +27,9 @@ if (hadoopVersion.startsWith("2.") || hadoopVersion.startsWith("0.23.")) {
 
 dependencies {
   testCompile group: "org.apache.pig", name: "pigunit", version: "$pigunitVersion"
+  testCompile group: 'commons-io', name: 'commons-io', version: '1.4'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
 }
