@@ -32,9 +32,9 @@ import org.apache.pig.impl.logicalLayer.schema.Schema.FieldSchema;
  * Example use in a pig script:
  *
  * define JACCARD   pigrank.Similarity('jaccard', '-1', '2', '3', '2', '3');
- * define JACCARD_2 com.a9.pigudf.eval.ranking.Similarity('jaccard', '2', '2', '3', '2', '3');
- * define COSINE    com.a9.pigudf.eval.ranking.Similarity('cosine', '-1', '2', '3', '2', '3');
- * define RBO       com.a9.pigudf.eval.ranking.Similarity('rbo', '0.9', '2', '3', '2', '3');
+ * define JACCARD_2 pigrank.Similarity('jaccard', '2', '2', '3', '2', '3');
+ * define COSINE    pigrank.Similarity('cosine', '-1', '2', '3', '2', '3');
+ * define RBO       pigrank.Similarity('rbo', '0.9', '2', '3', '2', '3');
  *
  * data = load 'input' using PigStorage('\t') as (
  *         query:chararray,

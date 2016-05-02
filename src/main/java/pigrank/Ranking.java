@@ -9,6 +9,11 @@ import java.util.HashMap;
 /** auxiliary class to represent one row in a ranked list. */
 class RankItem implements Comparable<RankItem> {
 
+  /**
+   * @param id unique identifier for item; used for comparison with other ranking
+   * @param score rank score
+   * @param target target value
+   */
   public RankItem(String id, double score, double target) {
     this.id = id;
     this.score = score;
@@ -58,6 +63,9 @@ public class Ranking extends ArrayList<RankItem> {
 
   protected static final double LOG2 = Math.log(2.0);
 
+  /**
+   * @param size initial memory capacity allocated
+   */
   public Ranking(int size) {
     ensureCapacity(size);
   }
@@ -66,6 +74,9 @@ public class Ranking extends ArrayList<RankItem> {
     add(new RankItem(id, score, target));
   }
 
+  /**
+   * Sort items in decreasing order of rank score
+   */
   public void rank() {
     Collections.sort(this);
   }
@@ -90,6 +101,11 @@ public class Ranking extends ArrayList<RankItem> {
     return strBuf.toString();
   }
 
+  /**
+   * mean reciprocal rank
+   * @param cutoff ranks greater than this are ignored
+   * @return mrr value
+   */
   public double getMRR(int cutoff) {
     int maxIter = Math.min(size(), cutoff);
     int tiedCount = 0;        // number of items with same score as current one
@@ -136,6 +152,12 @@ public class Ranking extends ArrayList<RankItem> {
     return 0.0;
   }
 
+  /**
+   * discounted cumulative gain
+   * @param cutoff ranks greater than this are ignored
+   * @param normalized if true, divide by total position weight
+   * @return DCG value
+   */
   public double getDCG(int cutoff, boolean normalized) {
 
     double sum = 0.0;        // discounted sum of target values

@@ -22,7 +22,7 @@ This project provides three user-defined functions for the Apache Pig language u
 
 *Similarity* expects two bags of tuples with corresponding rank score columns. Two additional columns are used as unique identifiers to decide whether an item in the first list is identical to one in the second list. 
 
-Note that *ties* in the rank score can give rise to multiple different rankings and hence rank measures. *DCG* and *MRR* take this into account by computing the *expectation* over all possible rankings.
+Note that *ties* in the rank score can give rise to multiple different rankings and hence rank measures. *DCG* and *MRR* take this into account by computing the *expectation* over all possible over all possible permutations of the tied items.
 
 ## DCG
 
